@@ -8,8 +8,46 @@
     outline: none;
 }
 
-a, button {
+a,
+button {
     outline: none;
+}
+
+#creature-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+#creature {
+    font-size: .2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150em;
+    height: 150em;
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+}
+
+#creature div {
+    transform-style: preserve-3d;
+    position: relative;
+    width: 4em;
+    height: 4em;
+    margin: 3em;
+    border-radius: 2em;
+    will-change: transform;
+    mix-blend-mode: plus-lighter;
+    background: var(--creature-color);
 }
 
 :root {
@@ -26,6 +64,7 @@ a, button {
     --shadow-md: 0 4px 6px -1px rgba(0, 183, 255, 0.4);
     --shadow-lg: 0 10px 15px -3px rgba(0, 183, 255, 0.5);
     --shadow-xl: 0 20px 25px -5px rgba(0, 183, 255, 0.6);
+    --creature-color: #00b7ff;
 }
 
 body {
@@ -78,7 +117,7 @@ body::before {
     border-radius: 50px !important;
     border: 1px solid rgba(0, 183, 255, 0.4) !important;
     box-shadow: 0 0 20px rgba(0, 183, 255, 0.3),
-                inset 0 0 20px rgba(0, 183, 255, 0.1) !important;
+        inset 0 0 20px rgba(0, 183, 255, 0.1) !important;
     transition: none !important;
     pointer-events: auto !important;
     visibility: visible !important;
@@ -91,7 +130,7 @@ body::before {
 .header:hover {
     border-color: rgba(0, 183, 255, 0.5);
     box-shadow: 0 0 30px rgba(0, 183, 255, 0.3),
-                inset 0 0 30px rgba(0, 183, 255, 0.15);
+        inset 0 0 30px rgba(0, 183, 255, 0.15);
 }
 
 .header-nav {
@@ -151,8 +190,15 @@ body::before {
 }
 
 @keyframes sparkle {
-    0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-    100% { transform: translateX(-50%) scale(1.5); opacity: 0.4; }
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1.5);
+        opacity: 0.4;
+    }
 }
 
 /* Navigation - Old styles (kept for compatibility) */
@@ -229,8 +275,15 @@ body::before {
 }
 
 @keyframes sparkle {
-    0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-    100% { transform: translateX(-50%) scale(1.5); opacity: 0.4; }
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateX(-50%) scale(1.5);
+        opacity: 0.4;
+    }
 }
 
 .menu-toggle {
@@ -313,7 +366,7 @@ section canvas {
     display: block;
     color: #00b7ff;
     text-shadow: 0 0 20px rgba(0, 183, 255, 0.8),
-                 0 0 40px rgba(0, 183, 255, 0.4);
+        0 0 40px rgba(0, 183, 255, 0.4);
 }
 
 .hero-subtitle {
@@ -429,10 +482,13 @@ section canvas {
 }
 
 @keyframes pulseGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 15px #00b7ff, 0 0 30px #00b7ff;
         border-color: #00b7ff;
     }
+
     50% {
         box-shadow: 0 0 25px #00b7ff, 0 0 50px #00b7ff, 0 0 75px rgba(0, 183, 255, 0.5);
         border-color: #00d4ff;
@@ -495,9 +551,12 @@ section canvas {
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0) rotate(0deg);
     }
+
     50% {
         transform: translateY(-20px) rotate(180deg);
     }
@@ -508,6 +567,7 @@ section canvas {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -519,6 +579,7 @@ section canvas {
         opacity: 0;
         transform: translateX(30px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -543,7 +604,7 @@ section::before {
     display: none;
 }
 
-section > .container {
+section>.container {
     position: relative;
     z-index: 3;
     width: 100%;
@@ -735,13 +796,25 @@ section > .container {
 }
 
 @keyframes shimmer {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
 }
 
 @keyframes shimmerMove {
-    0% { left: -100%; }
-    100% { left: 100%; }
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
 }
 
 @keyframes slideIn {
@@ -1160,22 +1233,22 @@ section > .container {
         padding: 12px 20px;
         border-radius: 40px;
     }
-    
+
     .header-nav {
         gap: 15px;
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+
     .nav-link {
         font-size: 14px;
         padding: 6px 12px;
     }
-    
+
     .hero {
         padding-top: 100px;
     }
-    
+
     .hero-title {
         font-size: 2.5rem;
     }
@@ -1227,6 +1300,7 @@ html {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1251,4 +1325,3 @@ html {
     background: #00b7ff;
     color: #000;
 }
-
